@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Bienvenida</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        .form-container { max-width: 300px; margin: auto; }
+        input { width: 100%; padding: 10px; margin: 10px 0; }
+        button { padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Bienvenido</h2>
+        <p>Por favor, ingresa tu nombre para continuar al menú.</p>
+        <input type="text" id="nombre" placeholder="Tu nombre" required>
+        <button onclick="guardarNombre()">Enviar</button>
+    </div>
+
+    <script>
+        // Comprueba si el nombre ya está guardado
+        document.addEventListener('DOMContentLoaded', function() {
+            const nombreGuardado = localStorage.getItem('nombreCliente');
+            if (nombreGuardado) {
+                // Si el nombre está guardado, redirige al menú
+                window.location.href = "menu.html";
+            }
+        });
+
+        // Función para guardar el nombre y redirigir al menú
+        function guardarNombre() {
+            const nombre = document.getElementById('nombre').value;
+            if (nombre) {
+                localStorage.setItem('nombreCliente', nombre);
+                window.location.href = "menu.html"; // Redirige al menú
+            } else {
+                alert("Por favor, ingresa tu nombre.");
+            }
+        }
+    </script>
+</body>
+</html>
